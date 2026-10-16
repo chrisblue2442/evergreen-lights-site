@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evergreenlightsok.com/sitemap.xml
