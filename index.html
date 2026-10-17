@@ -191,8 +191,8 @@
   .check { display: flex; align-items: center; gap: 10px; font-weight: 400; margin: 0; cursor: pointer; }
   .check input { width: 19px; height: 19px; accent-color: #d4af6a; flex: none; }
   .other-input { width: 100%; font: inherit; color: #eee9d3; background: #171717; border: 1px solid #333; border-radius: 8px; padding: 10px 14px; }
-  #areasErr, #colorsErr, #smsErr { color: #ff8a80; font-size: .88rem; margin-top: 8px; display: none; }
-  #areasErr.show, #colorsErr.show, #smsErr.show { display: block; }
+  #areasErr, #colorsErr, #heardErr, #smsErr { color: #ff8a80; font-size: .88rem; margin-top: 8px; display: none; }
+  #areasErr.show, #colorsErr.show, #heardErr.show, #smsErr.show { display: block; }
   .err { color: #ff8a80; font-size: .88rem; margin-top: 5px; display: none; }
   .field.invalid .err { display: block; }
   .field.invalid input, .field.invalid select { border-color: #ff8a80; }
@@ -364,10 +364,137 @@
       </div>
 
       <div>
-        <div class="form-embed">
-          <iframe src="https://docs.google.com/forms/d/1ig5dStPGkL0ZwKl4lyg6R1jm0ZsMdbvBzQaVJTd68WA/viewform?embedded=true" title="Evergreen Lights Estimate Form" loading="lazy">Loading&hellip;</iframe>
+        <form id="quoteForm" action="https://docs.google.com/forms/d/e/1FAIpQLScKuxyuaCd2x19V6LzgV7wPWp46sMVP0NMK7IwFieNokNvRrg/formResponse" method="POST" target="hidden_iframe" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="qName">Full name *</label>
+              <input type="text" id="qName" name="entry.1920864895" required>
+            </div>
+            <div class="field">
+              <label for="qEmail">Email *</label>
+              <input type="email" id="qEmail" name="entry.491572550" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="qPhone">Phone number *</label>
+              <input type="tel" id="qPhone" name="entry.770911741" required>
+            </div>
+            <div class="field">
+              <label for="qAddress">Installation address *</label>
+              <input type="text" id="qAddress" name="entry.1708449222" required>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Light type</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="entry.309141575" value="Temporary (Most popular)"> Temporary <span class="hint">(most popular)</span></label>
+              <label class="check"><input type="checkbox" name="entry.309141575" value="Permanent"> Permanent</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Areas to light *</legend>
+            <div class="checks" id="areasChecks">
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Front Roofline"> Front roofline</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Roof Ridges"> Roof ridges</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Windows"> Windows</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Tree Canopies"> Tree canopies</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Bushes"> Bushes</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Sidewalk"> Sidewalk</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="Driveway"> Driveway</label>
+              <label class="check"><input type="checkbox" name="entry.972165607" value="__other_option__" id="areasOtherBox"> Other</label>
+            </div>
+            <input type="text" class="other-input" id="areasOtherText" name="entry.972165607.other_option_response" placeholder="Tell us where" style="margin-top:8px;display:none">
+            <div id="areasErr" class="err">Select at least one area.</div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Colors *</legend>
+            <div class="checks" id="colorsChecks">
+              <label class="check"><input type="checkbox" name="entry.596286352" value="Warm White (Most popular)"> Warm white <span class="hint">(most popular)</span></label>
+              <label class="check"><input type="checkbox" name="entry.596286352" value="Red"> Red</label>
+              <label class="check"><input type="checkbox" name="entry.596286352" value="Green"> Green</label>
+              <label class="check"><input type="checkbox" name="entry.596286352" value="Cool White"> Cool white</label>
+              <label class="check"><input type="checkbox" name="entry.596286352" value="__other_option__" id="colorsOtherBox"> Other</label>
+            </div>
+            <input type="text" class="other-input" id="colorsOtherText" name="entry.596286352.other_option_response" placeholder="Describe the color" style="margin-top:8px;display:none">
+            <div id="colorsErr" class="err">Select at least one color.</div>
+          </fieldset>
+
+          <div class="row">
+            <fieldset class="field">
+              <legend>Do you own lights already? *</legend>
+              <div class="checks" style="grid-template-columns:1fr">
+                <label class="check"><input type="radio" name="entry.2055422619" value="Yes" required> Yes</label>
+                <label class="check"><input type="radio" name="entry.2055422619" value="No" required> No</label>
+                <label class="check"><input type="radio" name="entry.2055422619" value="Yes, but I want new ones" required> Yes, but I want new ones</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend>Preferred contact method *</legend>
+              <div class="checks" style="grid-template-columns:1fr">
+                <label class="check"><input type="radio" name="entry.1527839542" value="Email" required> Email</label>
+                <label class="check"><input type="radio" name="entry.1527839542" value="Phone Call" required> Phone call</label>
+                <label class="check"><input type="radio" name="entry.1527839542" value="Text Message" required> Text message</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <fieldset class="field">
+            <legend>Budget for lights this year *</legend>
+            <div class="checks" id="budgetChecks">
+              <label class="check"><input type="radio" name="entry.2098842885" value="$3,000+" required> $3,000+</label>
+              <label class="check"><input type="radio" name="entry.2098842885" value="$2,000-$3,000" required> $2,000&ndash;$3,000</label>
+              <label class="check"><input type="radio" name="entry.2098842885" value="$1,500-$2,000 (Most popular)" required> $1,500&ndash;$2,000 <span class="hint">(most popular)</span></label>
+              <label class="check"><input type="radio" name="entry.2098842885" value="$1,000-$1,500" required> $1,000&ndash;$1,500</label>
+              <label class="check"><input type="radio" name="entry.2098842885" value="$750-$1,000" required> $750&ndash;$1,000</label>
+              <label class="check"><input type="radio" name="entry.2098842885" value="__other_option__" id="budgetOtherBox" required> Other</label>
+            </div>
+            <input type="text" class="other-input" id="budgetOtherText" name="entry.2098842885.other_option_response" placeholder="Your budget" style="margin-top:8px;display:none">
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>How did you hear about us? *</legend>
+            <div class="checks" id="heardChecks">
+              <label class="check"><input type="checkbox" name="entry.823556404" value="From a friend!"> From a friend!</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Mailer"> Mailer</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Yard Sign"> Yard sign</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Facebook"> Facebook</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Google"> Google</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Truck Advertising"> Truck advertising</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Instagram"> Instagram</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Tulsa World"> Tulsa World</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Door Hanger"> Door hanger</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="Stroll Magazine"> Stroll Magazine</label>
+              <label class="check"><input type="checkbox" name="entry.823556404" value="__other_option__" id="heardOtherBox"> Other</label>
+            </div>
+            <input type="text" class="other-input" id="heardOtherText" name="entry.823556404.other_option_response" placeholder="Tell us" style="margin-top:8px;display:none">
+            <div id="heardErr" class="err">Select at least one.</div>
+          </fieldset>
+
+          <div class="field">
+            <label class="check" style="align-items:flex-start">
+              <input type="checkbox" name="entry.1260503658" value="By checking this box you agree to receive text messages from Evergreen Lights regarding quotes, scheduling, and service updates. Message and data rates may apply. I can reply STOP at any time to unsubscribe." id="smsConsent" style="margin-top:3px">
+              <span>By checking this box you agree to receive text messages from Evergreen Lights regarding quotes, scheduling, and service updates. Message and data rates may apply. I can reply STOP at any time to unsubscribe. *</span>
+            </label>
+            <div id="smsErr" class="err">Please check the box to continue.</div>
+          </div>
+
+          <button type="submit" class="btn">Send quote request</button>
+        </form>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none" title="submission"></iframe>
+
+        <div class="result" id="result">
+          <h3>Request sent!</h3>
+          <p>Thanks &mdash; we will follow up with your personalized quote soon. You can also reach us directly:</p>
+          <div class="actions">
+            <a class="btn secondary" href="tel:+19184989120">Call 918-498-9120</a>
+            <a class="btn secondary" href="mailto:lights@evergreenlightsok.com">Email us</a>
+          </div>
         </div>
-        <p class="form-embed-fallback">Trouble viewing the form? <a href="https://docs.google.com/forms/d/1ig5dStPGkL0ZwKl4lyg6R1jm0ZsMdbvBzQaVJTd68WA/viewform" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
       </div>
     </div>
   </section>
@@ -405,6 +532,59 @@
   });
   document.getElementById("lbClose").addEventListener("click", function () { lb.close(); });
   lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+
+  // Quote form -> submits to Google Form, styled to match the site
+  (function () {
+    var form = document.getElementById("quoteForm");
+    if (!form) return;
+    var result = document.getElementById("result");
+    var iframe = document.getElementById("hidden_iframe");
+    var submitted = false;
+
+    function wireOther(boxId, textId) {
+      var box = document.getElementById(boxId), text = document.getElementById(textId);
+      if (!box || !text) return;
+      box.addEventListener("change", function () {
+        text.style.display = box.checked ? "block" : "none";
+        if (box.checked) text.focus();
+      });
+      text.addEventListener("input", function () {
+        if (text.value.trim() && !box.checked) box.checked = true;
+      });
+    }
+    wireOther("areasOtherBox", "areasOtherText");
+    wireOther("colorsOtherBox", "colorsOtherText");
+    wireOther("budgetOtherBox", "budgetOtherText");
+    wireOther("heardOtherBox", "heardOtherText");
+
+    function anyChecked(name) {
+      return Array.prototype.some.call(form.querySelectorAll('input[name="' + name + '"]'), function (i) { return i.checked; });
+    }
+    function setGroupError(errId, ok) {
+      var el = document.getElementById(errId);
+      if (el) el.classList.toggle("show", !ok);
+    }
+
+    iframe.addEventListener("load", function () {
+      if (!submitted) return;
+      form.style.display = "none";
+      result.classList.add("show");
+      result.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = true;
+      var areasOk = anyChecked("entry.972165607"); setGroupError("areasErr", areasOk); ok = ok && areasOk;
+      var colorsOk = anyChecked("entry.596286352"); setGroupError("colorsErr", colorsOk); ok = ok && colorsOk;
+      var heardOk = anyChecked("entry.823556404"); setGroupError("heardErr", heardOk); ok = ok && heardOk;
+      var smsOk = document.getElementById("smsConsent").checked; setGroupError("smsErr", smsOk); ok = ok && smsOk;
+      if (!form.checkValidity()) { ok = false; form.reportValidity(); }
+      if (!ok) return;
+      submitted = true;
+      form.submit();
+    });
+  })();
 
 </script>
 </body>
